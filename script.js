@@ -7,7 +7,32 @@ class Movie {
         this.rating = rating;
         this.haveWatched = haveWatched;
     }
+}
 
+let outputLine = (line) => {
+    // Find the terminal body in the DOM
+    let terminalBody = document.getElementById('terminal-body');
+
+    // Create the new terminal line div
+    let terminalLine = document.createElement('div');
+    terminalLine.className = 'terminal-line';
+
+    // Create the prefix span
+    let prefixSpan = document.createElement('span');
+    prefixSpan.className = 'terminal-line__prefix';
+    prefixSpan.textContent = '$ ';
+
+    // Create the text div
+    let textDiv = document.createElement('div');
+    textDiv.className = 'terminal-line__text';
+    textDiv.textContent = line;  // or you could use innerHTML if you prefer
+
+    // Append the prefix and text to the terminal line
+    terminalLine.appendChild(prefixSpan);
+    terminalLine.appendChild(textDiv);
+
+    // Append the new terminal line to the terminal body
+    terminalBody.appendChild(terminalLine);
 }
 
 //add a movie OBJECT to the allMovies array
@@ -20,6 +45,7 @@ let addMovie = (movie) => {
 //Display the total number of movies in allMovies array
 let printMovies = () => {
     console.log("Printing all movies....");
+    outputLine("Printing all movies....");
 
 
     for (let i = 0; i < allMovies.length; i++) {
